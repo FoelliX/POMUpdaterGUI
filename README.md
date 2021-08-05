@@ -6,7 +6,7 @@ It automatically fetches all the possible versions that could be chosen from Mav
 Furthermore, it supports the usage of version-variables.
 
 <p align="center">
-	<a href="https://raw.githubusercontent.com/FoelliX/POMUpdaterGUI/master/screenshot.png" target="_blank"><img src="https://raw.githubusercontent.com/FoelliX/POMUpdaterGUI/master/screenshot.png" width="500px"/></a>
+	<a href="https://raw.githubusercontent.com/FoelliX/POMUpdaterGUI/master/screenshot.jpg" target="_blank"><img src="https://raw.githubusercontent.com/FoelliX/POMUpdaterGUI/master/screenshot.jpg" width="500px"/></a>
 </p>
 
 ## Running 
