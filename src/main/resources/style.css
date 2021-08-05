@@ -1,0 +1,32 @@
+.menu-bar {
+	-fx-padding: 0;
+}
+
+.menu {
+	-fx-padding: 0;
+}
+
+.defaultBtn{
+    -fx-background-radius: 0,0,0;
+}
+
+.root {
+    -fx-accent: #61794b;
+    -fx-focus-color: #AAAAAA;
+	-fx-faint-focus-color: #AAAAAA22;
+}
+
+.text-area {
+	-fx-background-radius: 0,0,0;
+	-fx-font-family: Consolas;
+	-fx-font-size: 11pt;
+	-fx-text-fill: #000000;
+}
+
+.text-area .content {
+	-fx-padding: 2px;
+}
+
+.text-area .text {
+	-fx-line-spacing: -4px;
+}
