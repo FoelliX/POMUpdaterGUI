@@ -18,9 +18,13 @@ To run the GUI:
 If you want to build the tool by yourself:
 - clone the repository
 - run: `mvn`  
-Then check the just created `target/build` directory.
+- check `target/build`
 
-### Why needed?
+### Notes
+- **Tested on:** Windows 10, Oracle Java 16.0.1  
+However, should run on any system that has Java 16 and JavaFX installed.
+
+- **Why needed?**  
 With `mvn versions:display-plugin-updates` and `mvn versions:display-dependency-updates` we can only display information about existing plugin and dependency versions.
 With `mvn versions:use-latest-versions` we can update all versions only to the latest.
 However, to comfortably select a mixture of different versions there was no satisfactory possibility until now!
