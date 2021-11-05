@@ -2,14 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.foellix</groupId>
 	<artifactId>POMUpdaterGUI</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<description>POM Updater GUI</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>16</maven.compiler.source>
 		<maven.compiler.target>16</maven.compiler.target>
-		<javafx.version>18-ea+1</javafx.version>
+		<javafx.version>18-ea+4</javafx.version>
 	</properties>
 
 	<dependencies>
@@ -36,7 +36,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<release>16</release>
+					<source>17</source>
+					<target>17</target>
 				</configuration>
 			</plugin>
 			<plugin>

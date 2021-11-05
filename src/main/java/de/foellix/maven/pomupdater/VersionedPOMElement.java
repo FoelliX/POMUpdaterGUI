@@ -73,7 +73,14 @@ public class VersionedPOMElement implements IElement {
 			final String metaDataXML = new String(url.openStream().readAllBytes(), StandardCharsets.UTF_8);
 			IOHandler.getInstance().parseMetaData(this, metaDataXML);
 		} catch (final IOException e) {
-			System.err.println("Could not get meta information from: " + link + Helper.getExceptionAppendix(e));
+			System.err.println("\n- Keeping current information for \"" + this.getIdentifier()
+					+ "\", since meta information could not be retrieved from: " + link
+					+ Helper.getExceptionAppendix(e));
+			if (this.version != null) {
+				getVersions().add(this.version);
+				setLatest(this.version);
+				setRelease(this.version);
+			}
 		}
 		this.versions.sort(VERSION_COMPARATOR);
 	}
