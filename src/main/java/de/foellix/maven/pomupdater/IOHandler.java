@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -110,6 +111,7 @@ public class IOHandler {
 		if (backup()) {
 			try {
 				final Transformer transformer = TransformerFactory.newInstance().newTransformer();
+				transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 				final DOMSource source = new DOMSource(this.pomDocument);
 				final FileWriter writer = new FileWriter(this.pomFile);
 				final StreamResult result = new StreamResult(writer);

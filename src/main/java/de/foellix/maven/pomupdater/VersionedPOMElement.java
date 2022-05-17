@@ -15,7 +15,27 @@ public class VersionedPOMElement implements IElement {
 	private static final Comparator<? super String> VERSION_COMPARATOR = new Comparator<String>() {
 		@Override
 		public int compare(String o1, String o2) {
-			return o1.compareTo(o2) * -1;
+			try {
+				if (o2 == null) {
+					return -1;
+				}
+				final String[] o1Parts = o1.split("\\.");
+				final String[] o2Parts = o2.split("\\.");
+				final int length = Math.max(o1Parts.length, o2Parts.length);
+				for (int i = 0; i < length; i++) {
+					final int thisPart = i < o1Parts.length ? Integer.parseInt(o1Parts[i]) : 0;
+					final int thatPart = i < o2Parts.length ? Integer.parseInt(o2Parts[i]) : 0;
+					if (thisPart < thatPart) {
+						return 1;
+					}
+					if (thisPart > thatPart) {
+						return -1;
+					}
+				}
+				return 0;
+			} catch (final Exception e) {
+				return o2.compareTo(o1);
+			}
 		}
 	};
 
