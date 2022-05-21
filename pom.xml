@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.foellix</groupId>
 	<artifactId>POMUpdaterGUI</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<description>POM Updater GUI</description>
 
 	<properties>
