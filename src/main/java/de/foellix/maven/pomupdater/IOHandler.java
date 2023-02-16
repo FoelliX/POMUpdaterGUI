@@ -61,12 +61,16 @@ public class IOHandler {
 			try {
 				this.pomDocument = this.builder.parse(pomFile);
 				this.variables.clear();
-				final NodeList properties = this.pomDocument.getElementsByTagName("properties").item(0).getChildNodes();
-				for (int i = 0; i < properties.getLength(); i++) {
-					final Node property = properties.item(i);
-					if (property.getNodeType() != Node.TEXT_NODE) {
-						this.variables.put(property.getNodeName(),
-								new VariableElement(property, property.getNodeName(), property.getTextContent()));
+				if (this.pomDocument.getElementsByTagName("properties") != null
+						&& this.pomDocument.getElementsByTagName("properties").getLength() > 0) {
+					final NodeList properties = this.pomDocument.getElementsByTagName("properties").item(0)
+							.getChildNodes();
+					for (int i = 0; i < properties.getLength(); i++) {
+						final Node property = properties.item(i);
+						if (property.getNodeType() != Node.TEXT_NODE) {
+							this.variables.put(property.getNodeName(),
+									new VariableElement(property, property.getNodeName(), property.getTextContent()));
+						}
 					}
 				}
 				final Map<String, List<VersionedPOMElement>> map = new HashMap<>();
@@ -108,6 +112,10 @@ public class IOHandler {
 	}
 
 	public void save() {
+		save(true);
+	}
+
+	public void save(boolean andExit) {
 		if (backup()) {
 			try {
 				final Transformer transformer = TransformerFactory.newInstance().newTransformer();
@@ -117,7 +125,9 @@ public class IOHandler {
 				final StreamResult result = new StreamResult(writer);
 				transformer.transform(source, result);
 				System.out.println("POM file successfully updated!");
-				System.exit(0);
+				if (andExit) {
+					System.exit(0);
+				}
 			} catch (final IOException | TransformerException e) {
 				System.err.println(
 						"Could not save POM file: " + this.pomFile.getAbsolutePath() + Helper.getExceptionAppendix(e));
